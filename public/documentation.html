@@ -7,6 +7,69 @@
     <title>DOCUMENTATION</title>
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid est soluta ad incidunt eos eius facilis ab magnam sit. Ullam amet eaque incidunt! Illo dolorum ipsam iusto exercitationem fugiat nobis.</p>
+    <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>URL</th>
+            <th>Request</th>
+            <th>Response</th>
+          </tr>
+          <tr>
+            <td>Return a list of all movies to the user</td>
+            <td>/movies</td>
+            <td>GET</td>
+            <td>A JSON object holding data over all movies</td>
+          </tr>
+          <tr>
+            <td>Return data about a single movie by title to the user</td>
+            <td>/movies/:title</td>
+            <td>GET</td>
+            <td>A JSON object for individual movie passed in URL param</td>
+          </tr>
+          <tr>
+            <td>Return data about a genre (description) by name</td>
+            <td>movies/genre/:genreName</td>
+            <td>GET</td>
+            <td>A JSON object for individual genre passed in URL param</td>
+          </tr>
+          <tr>
+            <td>Return data about a director by name</td>
+            <td>movies/directors/:directorName</td>
+            <td>GET</td>
+            <td>A JSON object for director passed in URL param</td>
+          </tr>
+          <tr>
+            <td>Allow new users to register</td>
+            <td>/users</td>
+            <td>POST <br>w/ JSON body param {"name": "", "age":""}</td>
+            <td>Adds new user JSON data to user JSON list</td>
+          </tr>
+          <tr>
+            <td>Allow users to update their user info (username)</td>
+            <td>/users/:id</td>
+            <td>PUT</td>
+            <td>A text message indicating whether the username was successfully updated</td>
+          </tr>
+          <tr>
+            <td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added)</td>
+            <td>/users/:id/:movieTitle</td>
+            <td>POST</td>
+            <td>A text message confirming the movie in URL param was added successfully</td>
+          </tr>
+          <tr>
+            <td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed)</td>
+            <td>/users/:id/:movieTitle</td>
+            <td>DELETE</td>
+            <td>A text message confirming the movie in URL param was removed successfully</td>
+          </tr>
+          <tr>
+            <td>Allow existing users to deregister (showing only a text that a user email has been removed)</td>
+            <td>/users/:id</td>
+            <td>DELETE</td>
+            <td>A text message confirming the user was deregistered</td>
+          </tr>
+        </thead>
+    </table>
 </body>
 </html>
