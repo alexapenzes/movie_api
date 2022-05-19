@@ -23,49 +23,65 @@
           </tr>
           <tr>
             <td>Return data about a single movie by title to the user</td>
-            <td>/movies/:title</td>
+            <td>/movies/:Title</td>
             <td>GET</td>
             <td>A JSON object for individual movie passed in URL param</td>
           </tr>
           <tr>
-            <td>Return data about a genre (description) by name</td>
-            <td>movies/genre/:genreName</td>
+            <td>Return data about a genre by name</td>
+            <td>movies/genres/:name</td>
             <td>GET</td>
             <td>A JSON object for individual genre passed in URL param</td>
           </tr>
           <tr>
             <td>Return data about a director by name</td>
-            <td>movies/directors/:directorName</td>
+            <td>movies/directors/:Name</td>
             <td>GET</td>
             <td>A JSON object for director passed in URL param</td>
           </tr>
           <tr>
             <td>Allow new users to register</td>
             <td>/users</td>
-            <td>POST <br>w/ JSON body param {"name": "", "age":""}</td>
+            <td>POST</td>
             <td>Adds new user JSON data to user JSON list</td>
+            <td>JSON required<br>{<br>
+              Username: { type: String, required: true },<br>
+              Password: { type: String, required: true },<br>
+              Email: { type: String, required: true },<br>
+              Birthday: Date,<br>
+              FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],<br>
+            }</td>
           </tr>
           <tr>
-            <td>Allow users to update their user info (username)</td>
-            <td>/users/:id</td>
+            <td>Allow users to update their user info</td>
+            <td>/users/:Username</td>
             <td>PUT</td>
             <td>A text message indicating whether the username was successfully updated</td>
+            <td>JSON required with updated data<br>{<br>
+              Username: String,<br>
+              (required)
+              Password: String,<br>
+              (required)
+              Email: String,<br>
+              (required)
+              Birthday: Date<br>
+            }</td>
           </tr>
           <tr>
-            <td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added)</td>
-            <td>/users/:id/:movieTitle</td>
+            <td>Allow users to add a movie to their list of favorites</td>
+            <td>/users/:Username/movies/:MovieID</td>
             <td>POST</td>
             <td>A text message confirming the movie in URL param was added successfully</td>
           </tr>
           <tr>
-            <td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed)</td>
-            <td>/users/:id/:movieTitle</td>
+            <td>Allow users to remove a movie from their list of favorites</td>
+            <td>/users/:Username/movies/:MovieID</td>
             <td>DELETE</td>
-            <td>A text message confirming the movie in URL param was removed successfully</td>
+            <td>A text message confirming the movie in URL param was removed successfully</tr>td>
           </tr>
           <tr>
-            <td>Allow existing users to deregister (showing only a text that a user email has been removed)</td>
-            <td>/users/:id</td>
+            <td>Allow existing users to deregister</td>
+            <td>/users/:Username</td>
             <td>DELETE</td>
             <td>A text message confirming the user was deregistered</td>
           </tr>
