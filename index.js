@@ -24,13 +24,24 @@ mongoose.connect( process.env.CONNECTION_URI, {
 
 const app = express();
 
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://ap-myflix.herokuapp.com/'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 //Middleware to...
 app.use(express.static("public")); // serve static files
 app.use(morgan("common")); // log requests to terminal
 app.use(bodyParser.json()); // use body-parser
 app.use(bodyParser.urlencoded({ extended: true })); // use body-parser encoded
-app.use(cors());
 let auth = require('./auth')(app); //auth.js file use express
 
 const passport = require('passport');
