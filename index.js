@@ -24,7 +24,7 @@ mongoose.connect( process.env.CONNECTION_URI, {
 
 const app = express();
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://ap-myflix.herokuapp.com', 'http://localhost:3000', 'https://myflix-ap.herokuapp.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://ap-myflix.herokuapp.com', 'http://localhost:3000', 'https://myflix-ap.herokuapp.com', 'http://localhost:4200'];
 
 app.use(cors({
   origin: (origin, callback) => {
